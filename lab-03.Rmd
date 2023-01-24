@@ -30,12 +30,19 @@ nobel_living<- nobel_living %>% filter( !is.na(country), gender!="org", is.na(di
 ```
 
 ### Exercise 3
+According to the bar plot, the title is true for economics and medicine. But still over half of the noble prize owners are based in the U.S. in the field of chemistry and physics.
+```{r ex3}
+nobel_living <- nobel_living %>%
+  mutate(
+    country_us = if_else(country == "USA", "USA", "Other")
+  )
+nobel_living_science <- nobel_living %>%
+  filter(category %in% c("Physics", "Medicine", "Chemistry", "Economics"))
+ggplot(nobel_living_science, aes(x=country_us, fill=category)) + 
+  geom_bar() +
+  facet_wrap(~category, nrow=4)
 
-Remove this text, and add your answer for Exercise 1 here.
-Add code chunks as needed.
-Don't forget to label your code chunk.
-Do not use spaces in code chunk labels.
-
+```
 ### Exercise 4
 
 ...
