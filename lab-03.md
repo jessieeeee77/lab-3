@@ -1,6 +1,6 @@
 Lab 03 - Nobel laureates
 ================
-Insert your name here
+Jessie
 Insert date here
 
 ### Load packages and data
