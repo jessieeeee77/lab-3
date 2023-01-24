@@ -44,13 +44,36 @@ ggplot(nobel_living_science, aes(x=country_us, fill=category)) +
 
 ```
 ### Exercise 4
-
-...
+105 laureates were born in the U.S.
+```{r ex4}
+nobel_living <- nobel_living %>%
+  mutate(
+    born_country_us = if_else(born_country == "USA", "USA", "Other")
+  )
+nobel_born_science <- nobel_living %>%
+  filter(category %in% c("Physics", "Medicine", "Chemistry", "Economics"))
+glimpse(nobel_born_science)
+sum(nobel_born_science$born_country_us %in% c ("USA"))
+```
 
 ### Exercise 5
 
-...
+It seems that the majority of U.S. laureates are also born in the U.S. in all subjects. But there is a certain amount of people who are not born in the U.S. but has bases in the U.S. The title seems true.
+```{r ex5}
+nobel_living_science <- nobel_living_science %>%
+  mutate(
+    born_country_us = if_else(born_country == "USA", "USA", "Other")
+  )
+nobel_born_science <- nobel_living_science %>%
+  filter(category %in% c("Physics", "Medicine", "Chemistry", "Economics"))
+ggplot(nobel_born_science, aes(x=country_us, fill=born_country_us)) + 
+  geom_bar() +
+  facet_wrap(~category, nrow=4)
+```
 
 ### Exercise 6
 
 ...
+```{r ex6}
+
+```
