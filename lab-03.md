@@ -149,4 +149,27 @@ ggplot(nobel_born_science, aes(x=country_us, fill=born_country_us)) +
 
 ### Exercise 6
 
-…
+Germany and United Kingdom …
+
+``` r
+nobel_born_science %>% 
+  filter(country_us == "USA") %>%
+  filter(born_country_us !="USA") %>%
+  count(born_country) %>%
+  arrange(desc(n))
+```
+
+    ## # A tibble: 21 × 2
+    ##    born_country       n
+    ##    <chr>          <int>
+    ##  1 Germany            7
+    ##  2 United Kingdom     7
+    ##  3 China              5
+    ##  4 Canada             4
+    ##  5 Japan              3
+    ##  6 Australia          2
+    ##  7 Israel             2
+    ##  8 Norway             2
+    ##  9 Austria            1
+    ## 10 Finland            1
+    ## # … with 11 more rows
